@@ -1185,7 +1185,8 @@
   </section>
 
   <footer>
-    &copy; 2025 Robert Ouko Ohuru &nbsp;·&nbsp; Enschede, Netherlands &nbsp;·&nbsp; Built with intention
+    &copy; <span id="year"></span> Robert Ouko Ohuru &nbsp;·&nbsp; Senior Software Engineer &nbsp;·&nbsp; Geospatial
+    Specialist
   </footer>
 
   <script>
@@ -1213,6 +1214,8 @@
         a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
       });
     });
+
+    document.getElementById("year").innerHTML = new Date().getFullYear();
   </script>
 </body>
 
