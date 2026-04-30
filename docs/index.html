@@ -1,48 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robert Ouko Ohuru — Geospatial Engineer</title>
+  <title>Robert Ouko Ohuru - Senior Software Engineer | Geospatial Specialist | Data Systems Architect</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;500;600&display=swap"
     rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            display: ['Fraunces', 'serif'],
+          },
+          colors: {
+            bg: '#090d12',
+            bg2: '#0f1620',
+            bg3: '#141d2b',
+            card: '#111824',
+            accent: '#e8854a',
+            accent2: '#4ac7e8',
+            geo: '#3ddc97',
+            muted: '#64748b',
+          },
+          borderColor: {
+            DEFAULT: 'rgba(255,255,255,0.07)',
+          },
+        }
+      }
+    }
+  </script>
   <style>
-    :root {
-      --bg: #090d12;
-      --bg2: #0f1620;
-      --bg3: #141d2b;
-      --border: rgba(255, 255, 255, 0.07);
-      --accent: #e8854a;
-      --accent2: #4ac7e8;
-      --geo: #3ddc97;
-      --text: #e2e8f0;
-      --muted: #64748b;
-      --card: #111824;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    /* ── GRID OVERLAY ── */
+    /* ── Grid overlay ── */
     body::before {
       content: '';
       position: fixed;
@@ -55,73 +50,15 @@
       z-index: 0;
     }
 
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.2rem 3rem;
-      background: rgba(9, 13, 18, 0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-logo {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.85rem;
-      color: var(--accent);
-      letter-spacing: 0.05em;
-    }
-
-    .nav-logo img {
-      height: 50px;
-      border-radius: 50%;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 0.8rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    /* ── HERO ── */
-    #hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 7rem 3rem 4rem;
-      overflow: hidden;
-    }
-
-    /* Topographic ring decoration */
+    /* ── Hero topo ring ── */
     #hero::after {
       content: '';
       position: absolute;
-      right: -10%;
+      right: -5%;
       top: 50%;
       transform: translateY(-50%);
-      width: 600px;
-      height: 600px;
+      width: 560px;
+      height: 560px;
       border-radius: 50%;
       background: radial-gradient(ellipse at center,
           transparent 30%,
@@ -135,6 +72,12 @@
           rgba(232, 133, 74, 0.03) 86%, transparent 87%);
       animation: topo-pulse 8s ease-in-out infinite;
       pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      #hero::after {
+        display: none;
+      }
     }
 
     @keyframes topo-pulse {
@@ -151,33 +94,42 @@
       }
     }
 
-    .hero-inner {
-      position: relative;
-      z-index: 1;
-      max-width: auto;
+    /* ── Entry animations ── */
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .hero-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--geo);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
+    .anim-1 {
       opacity: 0;
-      animation: fade-up 0.6s 0.2s forwards;
+      animation: fade-up 0.6s 0.15s forwards;
     }
 
-    .hero-tag::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--geo);
-      animation: blink 2s infinite;
+    .anim-2 {
+      opacity: 0;
+      animation: fade-up 0.7s 0.30s forwards;
+    }
+
+    .anim-3 {
+      opacity: 0;
+      animation: fade-up 0.7s 0.45s forwards;
+    }
+
+    .anim-4 {
+      opacity: 0;
+      animation: fade-up 0.7s 0.60s forwards;
+    }
+
+    .anim-5 {
+      opacity: 0;
+      animation: fade-up 0.7s 0.75s forwards;
     }
 
     @keyframes blink {
@@ -192,521 +144,11 @@
       }
     }
 
-    h1 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(3.2rem, 7vw, 6rem);
-      font-weight: 700;
-      line-height: 1.0;
-      margin-bottom: 0.3rem;
-      opacity: 0;
-      animation: fade-up 0.7s 0.35s forwards;
+    .blink-dot {
+      animation: blink 2s infinite;
     }
 
-    h1 em {
-      font-style: italic;
-      font-weight: 300;
-      color: var(--accent);
-    }
-
-    .hero-subtitle {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-      font-weight: 300;
-      color: var(--muted);
-      margin-bottom: 1.8rem;
-      opacity: 0;
-      animation: fade-up 0.7s 0.5s forwards;
-    }
-
-    .hero-desc {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      color: #94a3b8;
-      max-width: 100%;
-      margin-bottom: 2.5rem;
-      opacity: 0;
-      animation: fade-up 0.7s 0.65s forwards;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      opacity: 0;
-      animation: fade-up 0.7s 0.8s forwards;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.8rem 1.8rem;
-      border-radius: 4px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #0d0a06;
-      border: 2px solid var(--accent);
-    }
-
-    .btn-primary:hover {
-      background: transparent;
-      color: var(--accent);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border: 2px solid var(--border);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent2);
-      color: var(--accent2);
-    }
-
-    /* ── COORD STRIP ── */
-    .coord-strip {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--muted);
-      padding: 1rem 3rem;
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      gap: 2rem;
-      overflow: hidden;
-    }
-
-    /* ── SECTION WRAPPER ── */
-    section {
-      position: relative;
-      z-index: 1;
-      padding: 5rem 3rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-
-    h2 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(1rem, 4vw, 2rem);
-      font-weight: 700;
-      margin-bottom: 3rem;
-      line-height: 1.1;
-    }
-
-    h2 span {
-      color: var(--accent);
-    }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .about-text p {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: #94a3b8;
-      margin-bottom: 1rem;
-    }
-
-    .about-text strong {
-      color: var(--text);
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .stat-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 1.2rem;
-      transition: border-color 0.2s;
-    }
-
-    .stat-card:hover {
-      border-color: var(--accent);
-    }
-
-    .stat-num {
-      font-family: 'Fraunces', serif;
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 0.3rem;
-    }
-
-    .stat-label {
-      font-size: 0.8rem;
-      color: var(--muted);
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    /* ── SKILLS ── */
-    .skills-section {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .skill-categories {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .skill-cat {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-    }
-
-    .skill-cat-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--accent2);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .skill-cat-title::before {
-      content: '';
-      display: block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent2);
-    }
-
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .tag {
-      font-size: 0.75rem;
-      padding: 0.3rem 0.7rem;
-      border-radius: 3px;
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--text);
-      border: 1px solid var(--border);
-      font-family: 'JetBrains Mono', monospace;
-      transition: all 0.15s;
-    }
-
-    .tag:hover {
-      background: rgba(232, 133, 74, 0.12);
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* ── PROJECTS ── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .project-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.25s, border-color 0.25s;
-      text-decoration: none;
-      display: block;
-      color: inherit;
-    }
-
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(232, 133, 74, 0.3);
-    }
-
-    .project-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .project-card.geo::before {
-      background: var(--geo);
-    }
-
-    .project-card.geo:hover {
-      border-color: rgba(61, 220, 151, 0.3);
-    }
-
-    .project-card.blue::before {
-      background: var(--accent2);
-    }
-
-    .project-card.blue:hover {
-      border-color: rgba(74, 199, 232, 0.3);
-    }
-
-    .project-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .project-type {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-    }
-
-    .project-icon {
-      font-size: 1.4rem;
-    }
-
-    .project-card h3 {
-      font-family: 'Fraunces', serif;
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 0.7rem;
-      line-height: 1.2;
-    }
-
-    .project-card p {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: #94a3b8;
-      margin-bottom: 1.2rem;
-    }
-
-    .project-highlight {
-      background: rgba(61, 220, 151, 0.08);
-      border-left: 3px solid var(--geo);
-      padding: 0.6rem 0.8rem;
-      font-size: 0.82rem;
-      color: var(--geo);
-      border-radius: 0 4px 4px 0;
-      margin-bottom: 1.2rem;
-      font-weight: 500;
-    }
-
-    .project-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-    }
-
-    .stack-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      padding: 0.2rem 0.5rem;
-      border-radius: 2px;
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--muted);
-      border: 1px solid var(--border);
-    }
-
-    /* ── EXPERIENCE ── */
-    .timeline {
-      position: relative;
-      padding-left: 2rem;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--geo));
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-left: 1.5rem;
-      padding-bottom: 3rem;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -2.4rem;
-      top: 0.4rem;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 2px solid var(--bg);
-      box-shadow: 0 0 0 3px rgba(232, 133, 74, 0.2);
-    }
-
-    .timeline-item:nth-child(2)::before {
-      background: var(--accent2);
-      box-shadow: 0 0 0 3px rgba(74, 199, 232, 0.2);
-    }
-
-    .timeline-item:nth-child(3)::before {
-      background: var(--geo);
-      box-shadow: 0 0 0 3px rgba(61, 220, 151, 0.2);
-    }
-
-    .timeline-period {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      margin-bottom: 0.4rem;
-    }
-
-    .timeline-role {
-      font-family: 'Fraunces', serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      margin-bottom: 0.2rem;
-    }
-
-    .timeline-org {
-      font-size: 0.9rem;
-      color: var(--accent);
-      margin-bottom: 0.8rem;
-      font-weight: 500;
-    }
-
-    .timeline-desc {
-      font-size: 0.9rem;
-      line-height: 1.7;
-      color: #94a3b8;
-    }
-
-    /* ── CONTACT ── */
-    #contact {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .contact-text p {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: #94a3b8;
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      text-decoration: none;
-      padding: 0.9rem 1.2rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      transition: all 0.2s;
-      color: var(--text);
-    }
-
-    .contact-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateX(4px);
-    }
-
-    .contact-link-icon {
-      font-size: 1.1rem;
-      width: 20px;
-      text-align: center;
-    }
-
-    .contact-link-label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 2rem 3rem;
-      border-top: 1px solid var(--border);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--muted);
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fade-up {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
+    /* ── Scroll reveal ── */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -718,519 +160,986 @@
       transform: none;
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      nav {
-        padding: 1rem 1.5rem;
+    /* ── Timeline gradient line ── */
+    .timeline-line {
+      background: linear-gradient(to bottom, #e8854a, #4ac7e8, #3ddc97);
+    }
+
+    /* ── Project card top-bar ── */
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #e8854a;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .project-card.geo::before {
+      background: #3ddc97;
+    }
+
+    .project-card.blue::before {
+      background: #4ac7e8;
+    }
+
+    /* ── Skill-tag & stack-tag hover ── */
+    .skill-tag:hover {
+      background: rgba(232, 133, 74, 0.12);
+      border-color: #e8854a;
+      color: #e8854a;
+    }
+
+    /* ── Contact link slide ── */
+    .contact-link:hover {
+      transform: translateX(4px);
+    }
+
+    /* ── Ticker strip ── */
+    .ticker-wrap {
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .ticker-inner {
+      display: inline-block;
+      animation: ticker 28s linear infinite;
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(0);
       }
 
-      .nav-links {
-        display: none;
+      100% {
+        transform: translateX(-50%);
       }
+    }
 
-      section {
-        padding: 4rem 1.5rem;
-      }
-
-      #hero {
-        padding: 6rem 1.5rem 3rem;
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .coord-strip {
-        padding: 1rem 1.5rem;
-        font-size: 0.65rem;
-      }
-
-      #hero::after {
-        display: none;
-      }
+    /* ── Pub card year badge ── */
+    .pub-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
     }
   </style>
 </head>
 
-<body>
+<body class="font-sans bg-bg text-slate-200 overflow-x-hidden">
 
-  <!-- NAV -->
-  <nav>
-    <div class="nav-logo"><img src="/photo.jpg" /></div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
+  <!-- ══════════ NAV ══════════ -->
+  <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 md:px-12 py-4
+            bg-bg/85 backdrop-blur-xl border-b border-white/[0.07]">
+
+    <!-- Logo / avatar -->
+    <a href="#hero" class="flex items-center gap-3">
+      <img src="photo.jpg" alt="Robert Ouko Ohuru" class="h-10 w-10 rounded-full object-cover ring-2 ring-accent/40"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+      <span class="hidden font-mono text-accent text-xs tracking-wider">// robert.ohuru</span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="hidden md:flex gap-7 list-none">
+      <li><a href="#about"
+          class="nav-link font-mono text-[0.75rem] uppercase tracking-widest text-muted hover:text-slate-200 transition-colors">About</a>
+      </li>
+      <li><a href="#skills"
+          class="nav-link font-mono text-[0.75rem] uppercase tracking-widest text-muted hover:text-slate-200 transition-colors">Skills</a>
+      </li>
+      <li><a href="#projects"
+          class="nav-link font-mono text-[0.75rem] uppercase tracking-widest text-muted hover:text-slate-200 transition-colors">Projects</a>
+      </li>
+      <li><a href="#experience"
+          class="nav-link font-mono text-[0.75rem] uppercase tracking-widest text-muted hover:text-slate-200 transition-colors">Experience</a>
+      </li>
+      <li><a href="#publications"
+          class="nav-link font-mono text-[0.75rem] uppercase tracking-widest text-muted hover:text-slate-200 transition-colors">Publications</a>
+      </li>
+      <li><a href="#contact"
+          class="nav-link font-mono text-[0.75rem] uppercase tracking-widest text-muted hover:text-slate-200 transition-colors">Contact</a>
+      </li>
     </ul>
+
+    <!-- Mobile hamburger -->
+    <button id="menu-btn" aria-label="Toggle menu"
+      class="md:hidden flex flex-col gap-[5px] p-2 rounded-md hover:bg-white/5 transition">
+      <span class="ham-line block h-[2px] w-6 bg-slate-300 transition-all duration-300"></span>
+      <span class="ham-line block h-[2px] w-6 bg-slate-300 transition-all duration-300"></span>
+      <span class="ham-line block h-[2px] w-6 bg-slate-300 transition-all duration-300"></span>
+    </button>
   </nav>
 
-  <!-- HERO -->
-  <section id="hero" style="max-width:100%;padding-top:0rem !important;">
-    <div class="hero-inner">
-      <div class="hero-tag">Open to Kenya / EU / US / Global
-        Remote</div>
-      <h1>Robert <em>Ouko Ohuru</em></h1>
-      <p class="hero-subtitle">Senior Software Engineer &amp; Geospatial Specialist</p>
-      <p class="hero-desc">
-        12+ years engineering software at the intersection of spatial data, machine learning, and real-world impact —
-        Proven track record architecting high-performance ETL pipelines, deep learning models for remote sensing, and
-        production-grade GIS applications. Experienced in leading cross-functional engineering initiatives and
-        collaborating with international organizations across Europe, Africa, Asia, and the Americas.
+  <!-- Mobile drawer -->
+  <div id="mobile-menu" class="fixed inset-0 z-40 bg-bg/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8
+            translate-x-full transition-transform duration-300 md:hidden">
+    <a href="#about"
+      class="mobile-nav-link font-display text-3xl font-bold text-slate-200 hover:text-accent transition-colors">About</a>
+    <a href="#skills"
+      class="mobile-nav-link font-display text-3xl font-bold text-slate-200 hover:text-accent transition-colors">Skills</a>
+    <a href="#projects"
+      class="mobile-nav-link font-display text-3xl font-bold text-slate-200 hover:text-accent transition-colors">Projects</a>
+    <a href="#experience"
+      class="mobile-nav-link font-display text-3xl font-bold text-slate-200 hover:text-accent transition-colors">Experience</a>
+    <a href="#publications"
+      class="mobile-nav-link font-display text-3xl font-bold text-slate-200 hover:text-accent transition-colors">Publications</a>
+    <a href="#contact"
+      class="mobile-nav-link font-display text-3xl font-bold text-slate-200 hover:text-accent transition-colors">Contact</a>
+  </div>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section id="hero" class="relative min-h-screen flex items-center px-5 md:px-16 pt-28 pb-16 overflow-hidden z-10">
+    <div class="relative z-10 max-w-3xl">
+
+      <div
+        class="anim-1 inline-flex items-center gap-2 font-mono text-[0.72rem] text-geo uppercase tracking-widest mb-6">
+        <span class="blink-dot w-2 h-2 rounded-full bg-geo"></span>
+        Open to Kenya · EU · US · Global Remote
+      </div>
+
+      <h1 class="anim-2 font-display font-bold leading-none mb-2" style="font-size:clamp(3rem,8vw,5.5rem)">
+        Robert <em class="not-italic font-light text-accent">Ouko Ohuru</em>
+      </h1>
+
+      <p class="anim-3 font-display font-light mb-6 text-muted" style="font-size:clamp(1.1rem,2.5vw,1.6rem)">
+        Senior Software Engineer &amp; Geospatial Specialist
       </p>
-      <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">&#9658; View Projects</a>
-        <a href="mailto:robertohuru@gmail.com" class="btn btn-ghost">&#9993; Get in Touch</a>
-        <a href="https://github.com/robertohuru" target="_blank" class="btn btn-ghost">&#xe000; GitHub</a>
+
+      <p class="anim-4 text-slate-400 leading-relaxed mb-10 max-w-xl text-base md:text-[1.05rem]">
+        12+ years engineering software at the intersection of spatial data, machine learning, and real-world impact.
+        Proven track record architecting high-performance ETL pipelines, deep learning models for remote sensing, and
+        production-grade GIS applications — collaborating with international organisations across Europe, Africa, Asia,
+        and the Americas.
+      </p>
+
+      <div class="anim-5 flex flex-wrap gap-3">
+        <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 rounded font-mono text-xs font-bold uppercase tracking-wider
+                bg-accent text-[#0d0a06] border-2 border-accent hover:bg-transparent hover:text-accent transition-all">
+          &#9658; View Projects
+        </a>
+        <a href="mailto:robertohuru@gmail.com"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded font-mono text-xs font-bold uppercase tracking-wider
+                bg-transparent text-slate-200 border-2 border-white/10 hover:border-accent2 hover:text-accent2 transition-all">
+          ✉ Get in Touch
+        </a>
+        <a href="https://github.com/robertohuru" target="_blank" rel="noopener"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded font-mono text-xs font-bold uppercase tracking-wider
+                bg-transparent text-slate-200 border-2 border-white/10 hover:border-accent2 hover:text-accent2 transition-all">
+          &#128279; GitHub
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- COORD STRIP -->
-  <div class="coord-strip">
-    <span>Full-Stack Software Development</span>
-    <span>|</span>
-    <span>Geospatial Systems Architecture</span>
-    <span>|</span>
-    <span>PostgreSQL & Spatial Database Design</span>
-    <span>|</span>
-    <span>Machine Learning & Remote Sensing</span>
-    <span>|</span>
-    <span>Docker & Containerized Deployment</span>
-    <span>|</span>
-    <span>Cloud Infrastructure (AWS, Azure, GCP)</span>
-    <span>|</span>
-    <span>ETL & Data Pipeline Automation</span>
-    <span>|</span>
-    <span>Remote & Distributed Team Collaboration</span>
+  <!-- ══════════ TICKER STRIP ══════════ -->
+  <div class="ticker-wrap bg-bg2 border-y border-white/[0.07] py-3 z-10 relative">
+    <div class="ticker-inner font-mono text-[0.7rem] text-muted">
+      <span class="px-6">Full-Stack Software Development</span><span class="text-accent/40">|</span>
+      <span class="px-6">Geospatial Systems Architecture</span><span class="text-accent/40">|</span>
+      <span class="px-6">PostgreSQL &amp; Spatial Database Design</span><span class="text-accent/40">|</span>
+      <span class="px-6">Machine Learning &amp; Remote Sensing</span><span class="text-accent/40">|</span>
+      <span class="px-6">Docker &amp; Containerized Deployment</span><span class="text-accent/40">|</span>
+      <span class="px-6">Cloud Infrastructure (AWS · Azure · GCP)</span><span class="text-accent/40">|</span>
+      <span class="px-6">ETL &amp; Data Pipeline Automation</span><span class="text-accent/40">|</span>
+      <span class="px-6">Remote &amp; Distributed Team Collaboration</span><span class="text-accent/40">|</span>
+      <!-- duplicate for seamless loop -->
+      <span class="px-6">Full-Stack Software Development</span><span class="text-accent/40">|</span>
+      <span class="px-6">Geospatial Systems Architecture</span><span class="text-accent/40">|</span>
+      <span class="px-6">PostgreSQL &amp; Spatial Database Design</span><span class="text-accent/40">|</span>
+      <span class="px-6">Machine Learning &amp; Remote Sensing</span><span class="text-accent/40">|</span>
+      <span class="px-6">Docker &amp; Containerized Deployment</span><span class="text-accent/40">|</span>
+      <span class="px-6">Cloud Infrastructure (AWS · Azure · GCP)</span><span class="text-accent/40">|</span>
+      <span class="px-6">ETL &amp; Data Pipeline Automation</span><span class="text-accent/40">|</span>
+      <span class="px-6">Remote &amp; Distributed Team Collaboration</span><span class="text-accent/40">|</span>
+    </div>
   </div>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <p class="section-label reveal">ABOUT</p>
-    <h2 class="reveal">Software Engineer | <span>Geospatial Specialist | </span>Cloud & Data Systems.</h2>
-    <div class="about-grid">
-      <div class="about-text reveal">
+  <!-- ══════════ ABOUT ══════════ -->
+  <section id="about" class="relative z-10 max-w-5xl mx-auto px-5 md:px-12 py-20">
+    <p class="reveal font-mono text-[0.72rem] text-accent uppercase tracking-[0.15em] mb-2">About</p>
+    <h2 class="reveal font-display font-bold leading-tight mb-12" style="font-size:clamp(1.6rem,4vw,2.6rem)">
+      Software Engineer · <span class="text-accent">Geospatial Specialist</span> · Cloud &amp; Data Systems
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-start">
+      <!-- Bio -->
+      <div class="reveal space-y-4 text-slate-400 leading-relaxed text-[0.97rem]">
         <p>
-          I'm a <strong>Senior Software Engineer and Engineering Manager</strong> at the University of Twente in the
-          Netherlands, where I lead development of geospatial software systems and data pipelines.
+          I am a <strong class="text-slate-200">Senior Software Engineer and Engineering Manager</strong> at the
+          University of Twente in the Netherlands, where I lead the development of geospatial software systems and data
+          pipelines.
         </p>
         <p>
           My work spans the full stack — from satellite imagery classification using deep learning to building REST APIs
           and deploying cloud infrastructure — always anchored in real-world spatial problems.
         </p>
         <p>
-          MSc Geoinformatics, University of Twente, Netherlands · BSc Computer Science, JKUAT, Kenya.
+          <strong class="text-slate-200">Education:</strong> MSc Geoinformatics, University of Twente, Netherlands ·
+          BSc Computer Science, JKUAT, Kenya.
         </p>
-        <p>Multilingual:
-          English, Swahili,
-          Dutch (Intermediate). Open to roles in Kenya, EU, US, and globally remote.
+        <p>
+          <strong class="text-slate-200">Languages:</strong> English (fluent) · Swahili (native) · Dutch (professional).
         </p>
       </div>
-      <div class="stat-grid reveal">
-        <div class="stat-card">
-          <div class="stat-num">12+</div>
-          <div class="stat-label">Years of Experience</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">3</div>
-          <div class="stat-label">Publications</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">5</div>
-          <div class="stat-label">Certifications</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">∞</div>
-          <div class="stat-label">Systems Developed</div>
-        </div>
+
+      <!-- Stats grid -->
+      <div class="reveal grid grid-cols-2 gap-4">
+        <a href="#experience"
+          class="stat-card block bg-card border border-white/[0.07] rounded-lg p-5 hover:border-accent transition-colors">
+          <div class="font-display text-4xl font-bold text-accent leading-none mb-1">12+</div>
+          <div class="font-mono text-[0.72rem] text-muted uppercase tracking-wider">Years of Experience</div>
+        </a>
+        <a href="#publications"
+          class="stat-card block bg-card border border-white/[0.07] rounded-lg p-5 hover:border-accent transition-colors">
+          <div class="font-display text-4xl font-bold text-accent leading-none mb-1">7+</div>
+          <div class="font-mono text-[0.72rem] text-muted uppercase tracking-wider">Publications</div>
+        </a>
+        <a href="#skills"
+          class="stat-card block bg-card border border-white/[0.07] rounded-lg p-5 hover:border-accent transition-colors">
+          <div class="font-display text-4xl font-bold text-accent leading-none mb-1">3+</div>
+          <div class="font-mono text-[0.72rem] text-muted uppercase tracking-wider">Certifications</div>
+        </a>
+        <a href="#projects"
+          class="stat-card block bg-card border border-white/[0.07] rounded-lg p-5 hover:border-accent transition-colors">
+          <div class="font-display text-4xl font-bold text-accent leading-none mb-1">∞</div>
+          <div class="font-mono text-[0.72rem] text-muted uppercase tracking-wider">Systems Deployed</div>
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
-  <div class="skills-section">
-    <section id="skills" style="padding:4rem 3rem;">
-      <p class="section-label reveal">skills</p>
-      <h2 class="reveal">The <span>stack</span> behind the work</h2>
-      <div class="skill-categories">
-        <div class="skill-cat reveal">
-          <div class="skill-cat-title">Languages</div>
-          <div class="skill-tags">
-            <span class="tag">Python</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Java</span>
-            <span class="tag">C++</span>
-            <span class="tag">SQL</span>
-            <span class="tag">TypeScript</span>
+  <!-- ══════════ SKILLS ══════════ -->
+  <div class="bg-bg2 border-y border-white/[0.07] relative z-10">
+    <section id="skills" class="max-w-5xl mx-auto px-5 md:px-12 py-16">
+      <p class="reveal font-mono text-[0.72rem] text-accent uppercase tracking-[0.15em] mb-2">Skills</p>
+      <h2 class="reveal font-display font-bold leading-tight mb-10" style="font-size:clamp(1.6rem,4vw,2.6rem)">
+        The <span class="text-accent">stack</span> behind the work
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <!-- Languages -->
+        <div class="reveal bg-card border border-white/[0.07] rounded-xl p-5">
+          <div class="flex items-center gap-2 font-mono text-[0.72rem] text-accent2 uppercase tracking-widest mb-4">
+            <span class="w-2 h-2 rounded-full bg-accent2"></span>Languages
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Python</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">JavaScript</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">TypeScript</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Java</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">C++</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">SQL</span>
           </div>
         </div>
-        <div class="skill-cat reveal">
-          <div class="skill-cat-title">Frameworks</div>
-          <div class="skill-tags">
-            <span class="tag">Django</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Flask</span>
-            <span class="tag">Spring Boot</span>
-            <span class="tag">Angular</span>
-            <span class="tag">React</span>
+
+        <!-- Frameworks -->
+        <div class="reveal bg-card border border-white/[0.07] rounded-xl p-5">
+          <div class="flex items-center gap-2 font-mono text-[0.72rem] text-accent2 uppercase tracking-widest mb-4">
+            <span class="w-2 h-2 rounded-full bg-accent2"></span>Frameworks
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Django</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">FastAPI</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Flask</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Spring
+              Boot</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Angular</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">React</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Symfony</span>
           </div>
         </div>
-        <div class="skill-cat reveal">
-          <div class="skill-cat-title">ML / AI</div>
-          <div class="skill-tags">
-            <span class="tag">TensorFlow</span>
-            <span class="tag">PyTorch</span>
-            <span class="tag">Keras</span>
-            <span class="tag">scikit-learn</span>
-            <span class="tag">GDAL</span>
-            <span class="tag">Rasterio</span>
+
+        <!-- ML / AI -->
+        <div class="reveal bg-card border border-white/[0.07] rounded-xl p-5">
+          <div class="flex items-center gap-2 font-mono text-[0.72rem] text-accent2 uppercase tracking-widest mb-4">
+            <span class="w-2 h-2 rounded-full bg-accent2"></span>ML / AI
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">TensorFlow</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">PyTorch</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Keras</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">scikit-learn</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">GDAL</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Rasterio</span>
           </div>
         </div>
-        <div class="skill-cat reveal">
-          <div class="skill-cat-title">Geospatial</div>
-          <div class="skill-tags">
-            <span class="tag">QGIS</span>
-            <span class="tag">PyQGIS</span>
-            <span class="tag">ArcGIS Pro</span>
-            <span class="tag">ArcPy</span>
-            <span class="tag">PostGIS</span>
-            <span class="tag">MapBox</span>
-            <span class="tag">Leaflet</span>
-            <span class="tag">OpenLayers</span>
-            <span class="tag">Remote Sensing</span>
-            <span class="tag">FME</span>
-            <span class="tag">ODK</span>
-            <span class="tag">Google Earth Engine</span>
+
+        <!-- Geospatial -->
+        <div class="reveal bg-card border border-white/[0.07] rounded-xl p-5">
+          <div class="flex items-center gap-2 font-mono text-[0.72rem] text-accent2 uppercase tracking-widest mb-4">
+            <span class="w-2 h-2 rounded-full bg-accent2"></span>Geospatial
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">QGIS</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">PyQGIS</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">ArcGIS
+              Pro</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">ArcPy</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">PostGIS</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">MapBox</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Leaflet</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">OpenLayers</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">FME</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">ODK</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Google
+              Earth Engine</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Remote
+              Sensing</span>
           </div>
         </div>
-        <div class="skill-cat reveal">
-          <div class="skill-cat-title">Cloud &amp; Infra</div>
-          <div class="skill-tags">
-            <span class="tag">AWS</span>
-            <span class="tag">Azure</span>
-            <span class="tag">GCP</span>
-            <span class="tag">Docker</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">SQL Server</span>
+
+        <!-- Cloud & Infra -->
+        <div class="reveal bg-card border border-white/[0.07] rounded-xl p-5">
+          <div class="flex items-center gap-2 font-mono text-[0.72rem] text-accent2 uppercase tracking-widest mb-4">
+            <span class="w-2 h-2 rounded-full bg-accent2"></span>Cloud &amp; Infra
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">AWS</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Azure</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">GCP</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Docker</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">PostgreSQL</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">SQL
+              Server</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">MySQL</span>
           </div>
         </div>
-        <div class="skill-cat reveal">
-          <div class="skill-cat-title">Certifications</div>
-          <div class="skill-tags">
-            <span class="tag">ESRI ArcGIS Desktop</span>
-            <span class="tag">Azure AI Fundamentals</span>
-            <span class="tag">IBM DB2 DBA</span>
+
+        <!-- Certifications -->
+        <div class="reveal bg-card border border-white/[0.07] rounded-xl p-5">
+          <div class="flex items-center gap-2 font-mono text-[0.72rem] text-accent2 uppercase tracking-widest mb-4">
+            <span class="w-2 h-2 rounded-full bg-accent2"></span>Certifications
           </div>
+          <div class="flex flex-wrap gap-2">
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">ESRI
+              ArcGIS Desktop</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">Azure
+              AI Fundamentals</span>
+            <span
+              class="skill-tag font-mono text-[0.72rem] px-2.5 py-1 rounded border border-white/[0.07] bg-white/5 text-slate-200 cursor-default transition-all">IBM
+              DB2 DBA</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ══════════ PROJECTS ══════════ -->
+  <section id="projects" class="relative z-10 max-w-5xl mx-auto px-5 md:px-12 py-20">
+    <p class="reveal font-mono text-[0.72rem] text-accent uppercase tracking-[0.15em] mb-2">Featured projects
+    </p>
+    <h2 class="reveal font-display font-bold leading-tight mb-10" style="font-size:clamp(1.6rem,4vw,2.6rem)">
+      Built to <span class="text-accent">last.</span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+
+      <!-- Satellite Pipeline -->
+      <a class="project-card reveal relative block bg-card border border-white/[0.07] rounded-xl p-7 overflow-hidden
+              transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 no-underline text-inherit"
+        href="https://github.com/robertohuru" target="_blank" rel="noopener">
+        <div class="flex justify-between items-center mb-4">
+          <span class="font-mono text-[0.65rem] text-muted uppercase tracking-wider">Deep Learning · Remote
+            Sensing</span>
+          <span class="text-xl">🛰️</span>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3 leading-snug text-slate-100">Satellite Imagery Deep Learning
+          Pipeline</h3>
+        <p class="text-[0.88rem] text-slate-400 leading-relaxed mb-4">
+          End-to-end pipeline for automated classification and feature extraction from multispectral satellite imagery
+          using convolutional neural networks, built for large-scale environmental monitoring at UTwente.
+        </p>
+        <div class="text-[0.8rem] font-medium text-geo bg-geo/10 border-l-4 border-geo rounded-r px-3 py-2 mb-4">
+          ⚡ Significant reduction in processing runtime vs. traditional methods
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">TensorFlow</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">Python</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">PostGIS</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">AWS</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">GDAL</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">Rasterio</span>
+        </div>
+      </a>
+
+      <!-- CPLUS Plugin -->
+      <a class="project-card geo reveal relative block bg-card border border-white/[0.07] rounded-xl p-7 overflow-hidden
+              transition-all duration-300 hover:-translate-y-1 hover:border-geo/30 no-underline text-inherit"
+        href="https://github.com/ConservationInternational/cplus-plugin" target="_blank" rel="noopener">
+        <div class="flex justify-between items-center mb-4">
+          <span class="font-mono text-[0.65rem] text-muted uppercase tracking-wider">Open Source · QGIS Plugin</span>
+          <span class="text-xl">🌿</span>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3 leading-snug text-slate-100">CPLUS QGIS Plugin</h3>
+        <p class="text-[0.88rem] text-slate-400 leading-relaxed mb-4">
+          Open-source QGIS plugin developed for Conservation International to support conservation planning and natural
+          capital accounting. Helps analysts model land-use scenarios directly inside QGIS.
+        </p>
+        <div class="text-[0.8rem] font-medium text-geo bg-geo/10 border-l-4 border-geo rounded-r px-3 py-2 mb-4">
+          🌍 Deployed for conservation teams across multiple countries
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">Python</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">PyQGIS</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">GDAL</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">Qt</span>
+        </div>
+      </a>
+
+      <!-- FLATS -->
+      <a class="project-card blue reveal relative block bg-card border border-white/[0.07] rounded-xl p-7 overflow-hidden
+              transition-all duration-300 hover:-translate-y-1 hover:border-accent2/30 no-underline text-inherit"
+        href="https://github.com/robertohuru" target="_blank" rel="noopener">
+        <div class="flex justify-between items-center mb-4">
+          <span class="font-mono text-[0.65rem] text-muted uppercase tracking-wider">Land Administration ·
+            UN-Habitat</span>
+          <span class="text-xl">🏛️</span>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3 leading-snug text-slate-100">Digital Flexible Land Administration
+          System</h3>
+        <p class="text-[0.88rem] text-slate-400 leading-relaxed mb-4">
+          Web-based FLATS system deployed for UN-Habitat in Namibia, enabling digital management of land rights, parcel
+          records, and tenure documentation for informal settlements.
+        </p>
+        <div class="text-[0.8rem] font-medium text-geo bg-geo/10 border-l-4 border-geo rounded-r px-3 py-2 mb-4">
+          📈 Major efficiency gain over previous paper-based workflows
+        </div>
+        <div class="flex flex-wrap gap-1.5">
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">Django</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">PostGIS</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">REST
+            API</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">Leaflet</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">ODK</span>
+        </div>
+      </a>
+
+      <!-- Supplant Plugin -->
+      <a class="project-card geo reveal relative block bg-card border border-white/[0.07] rounded-xl p-7 overflow-hidden
+              transition-all duration-300 hover:-translate-y-1 hover:border-geo/30 no-underline text-inherit"
+        href="https://github.com/GIP-ITC-UniversityTwente/supplant_plugin" target="_blank" rel="noopener">
+        <div class="flex justify-between items-center mb-4">
+          <span class="font-mono text-[0.65rem] text-muted uppercase tracking-wider">Land Administration · QGIS
+            Plugin</span>
+          <span class="text-xl">🗺️</span>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3 leading-snug text-slate-100">GLSC Supplant QGIS Plugin</h3>
+        <p class="text-[0.88rem] text-slate-400 leading-relaxed mb-4">
+          QGIS plugin for constructing high-quality digital representations of Guyanese survey plans, developed under
+          the FAO-GLSC Guyana Sustainable Land Development and Management project funded by the Guyana REDD+ Investment
+          Fund.
+        </p>
+        <div class="flex flex-wrap gap-1.5">
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">Python</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">PyQGIS</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">GDAL</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">PostGIS</span>
+        </div>
+      </a>
+
+      <!-- Statistics from Space -->
+      <a class="project-card reveal relative block bg-card border border-white/[0.07] rounded-xl p-7 overflow-hidden
+              transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 no-underline text-inherit"
+        href="https://mapfra.itc.utwente.nl/" target="_blank" rel="noopener">
+        <div class="flex justify-between items-center mb-4">
+          <span class="font-mono text-[0.65rem] text-muted uppercase tracking-wider">Agriculture · Statistics ·
+            ETL</span>
+          <span class="text-xl">🌾</span>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3 leading-snug text-slate-100">Statistics from Space System</h3>
+        <p class="text-[0.88rem] text-slate-400 leading-relaxed mb-4">
+          Web-based platform for visualising agricultural crop statistics in Mozambique, integrating field-monitoring
+          data with crop figures aggregated to district, province, and national levels.
+        </p>
+        <div class="flex flex-wrap gap-1.5">
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">Django</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">PostGIS</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">REST
+            API</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">Leaflet</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">ODK</span>
+        </div>
+      </a>
+
+      <!-- Living TextBook -->
+      <a class="project-card blue reveal relative block bg-card border border-white/[0.07] rounded-xl p-7 overflow-hidden
+              transition-all duration-300 hover:-translate-y-1 hover:border-accent2/30 no-underline text-inherit"
+        href="https://ltb.itc.utwente.nl/" target="_blank" rel="noopener">
+        <div class="flex justify-between items-center mb-4">
+          <span class="font-mono text-[0.65rem] text-muted uppercase tracking-wider">Graph · Visualisation ·
+            Ontology</span>
+          <span class="text-xl">📚</span>
+        </div>
+        <h3 class="font-display text-xl font-bold mb-3 leading-snug text-slate-100">The Living TextBook (LTB)</h3>
+        <p class="text-[0.88rem] text-slate-400 leading-relaxed mb-4">
+          Interactive platform combining wiki-style content with visual concept-relationship maps. Enables domain
+          experts to build knowledge graphs and learners to freely explore concepts through their connections.
+        </p>
+        <div class="flex flex-wrap gap-1.5">
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">PHP</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">Symfony</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">MySQL</span>
+          <span
+            class="font-mono text-[0.65rem] px-2 py-0.5 rounded border border-white/[0.07] bg-white/[0.04] text-muted">REST
+            API</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="text-center mt-10 reveal">
+      <a href="https://github.com/robertohuru" target="_blank" rel="noopener"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded font-mono text-xs font-bold uppercase tracking-wider
+              bg-transparent text-slate-200 border-2 border-white/10 hover:border-accent2 hover:text-accent2 transition-all">
+        View all repositories on GitHub →
+      </a>
+    </div>
+  </section>
+
+  <!-- ══════════ EXPERIENCE ══════════ -->
+  <div class="bg-bg2 border-y border-white/[0.07] relative z-10">
+    <section id="experience" class="max-w-5xl mx-auto px-5 md:px-12 py-20">
+      <p class="reveal font-mono text-[0.72rem] text-accent uppercase tracking-[0.15em] mb-2">Experience</p>
+      <h2 class="reveal font-display font-bold leading-tight mb-12" style="font-size:clamp(1.6rem,4vw,2.6rem)">
+        Where I've <span class="text-accent">worked.</span>
+      </h2>
+
+      <div class="relative pl-7 border-l-0">
+        <!-- Gradient timeline bar -->
+        <div class="timeline-line absolute left-0 top-0 bottom-0 w-px"></div>
+
+        <!-- Timeline items -->
+        <div class="relative mb-10 reveal">
+          <span class="absolute -left-[1.85rem] top-1.5 w-2.5 h-2.5 rounded-full bg-accent ring-4 ring-bg2"></span>
+          <p class="font-mono text-[0.68rem] text-muted tracking-wider mb-1">Jan 2025 — Present</p>
+          <h3 class="font-display text-lg font-bold">Engineering &amp; Application Manager</h3>
+          <p class="text-sm text-accent font-medium mb-2">University of Twente, Enschede, Netherlands</p>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Leading engineering and application strategy for geospatial software systems. Overseeing development teams,
+            infrastructure, and research software initiatives across the Faculty of Geo-Information Science and Earth
+            Observation (ITC).
+          </p>
+        </div>
+
+        <div class="relative mb-10 reveal">
+          <span class="absolute -left-[1.85rem] top-1.5 w-2.5 h-2.5 rounded-full bg-accent2 ring-4 ring-bg2"></span>
+          <p class="font-mono text-[0.68rem] text-muted tracking-wider mb-1">2019 — 2024</p>
+          <h3 class="font-display text-lg font-bold">Senior Software Engineer</h3>
+          <p class="text-sm text-accent font-medium mb-2">University of Twente, Enschede, Netherlands</p>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Developed geospatial web applications and data pipelines, including satellite imagery deep learning systems
+            and spatial data infrastructure. Led full-stack development using Python, Django, FastAPI, Angular, PostGIS,
+            and AWS.
+          </p>
+        </div>
+
+        <div class="relative mb-10 reveal">
+          <span class="absolute -left-[1.85rem] top-1.5 w-2.5 h-2.5 rounded-full bg-geo ring-4 ring-bg2"></span>
+          <p class="font-mono text-[0.68rem] text-muted tracking-wider mb-1">Previous</p>
+          <h3 class="font-display text-lg font-bold">Geospatial Developer</h3>
+          <p class="text-sm text-accent font-medium mb-2">Tensing Limited, Utrecht, Netherlands</p>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Supported software development using the ESRI ArcGIS Pro SDK, Python, and JavaScript API. Designed and
+            developed ETL workflows using FME.
+          </p>
+        </div>
+
+        <div class="relative mb-10 reveal">
+          <span class="absolute -left-[1.85rem] top-1.5 w-2.5 h-2.5 rounded-full bg-accent ring-4 ring-bg2"></span>
+          <p class="font-mono text-[0.68rem] text-muted tracking-wider mb-1">Previous</p>
+          <h3 class="font-display text-lg font-bold">Senior GIS Consultant</h3>
+          <p class="text-sm text-accent font-medium mb-2">UN-Habitat</p>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Designed and implemented the Digital Flexible Land Administration System (FLATS) for Namibia. Delivered
+            spatial data solutions to improve land tenure documentation for informal urban settlements.
+          </p>
+        </div>
+
+        <div class="relative mb-10 reveal">
+          <span class="absolute -left-[1.85rem] top-1.5 w-2.5 h-2.5 rounded-full bg-accent2 ring-4 ring-bg2"></span>
+          <p class="font-mono text-[0.68rem] text-muted tracking-wider mb-1">Previous</p>
+          <h3 class="font-display text-lg font-bold">Software Engineer (Consultant)</h3>
+          <p class="text-sm text-accent font-medium mb-2">Palladium Group Holdings Limited, Singida, Tanzania</p>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Designed and developed a mobile application for water-incident reporting, an admin geoportal for managing
+            reported incidents, and a PostgreSQL database infrastructure for data aggregation and real-time monitoring.
+          </p>
+        </div>
+
+        <div class="relative mb-10 reveal">
+          <span class="absolute -left-[1.85rem] top-1.5 w-2.5 h-2.5 rounded-full bg-geo ring-4 ring-bg2"></span>
+          <p class="font-mono text-[0.68rem] text-muted tracking-wider mb-1">Previous</p>
+          <h3 class="font-display text-lg font-bold">Software Developer</h3>
+          <p class="text-sm text-accent font-medium mb-2">Upande Limited, Nairobi, Kenya</p>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Built custom software and GIS solutions for clients across East Africa, working across the full web stack
+            with a focus on data-driven decision-making and environmental monitoring systems.
+          </p>
+        </div>
+
+        <div class="relative mb-10 reveal">
+          <span class="absolute -left-[1.85rem] top-1.5 w-2.5 h-2.5 rounded-full bg-accent ring-4 ring-bg2"></span>
+          <p class="font-mono text-[0.68rem] text-muted tracking-wider mb-1">Previous</p>
+          <h3 class="font-display text-lg font-bold">IT Analyst</h3>
+          <p class="text-sm text-accent font-medium mb-2">EED Advisory, Nairobi, Kenya</p>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Managed internal IT systems, administered the Bridge Electric Portal, and designed and developed the
+            Household Energy Data Aggregator (HEDA) portal.
+          </p>
+        </div>
+
+        <div class="relative mb-10 reveal">
+          <span class="absolute -left-[1.85rem] top-1.5 w-2.5 h-2.5 rounded-full bg-accent2 ring-4 ring-bg2"></span>
+          <p class="font-mono text-[0.68rem] text-muted tracking-wider mb-1">Previous</p>
+          <h3 class="font-display text-lg font-bold">Software Developer</h3>
+          <p class="text-sm text-accent font-medium mb-2">Naturesurf Systems, Nairobi, Kenya</p>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Designed and developed an MIS system integrating biometrics for the registration and identification of
+            individuals at border checkpoints, using Java, Spring Boot, and MySQL.
+          </p>
+        </div>
+
+        <div class="relative reveal">
+          <span class="absolute -left-[1.85rem] top-1.5 w-2.5 h-2.5 rounded-full bg-geo ring-4 ring-bg2"></span>
+          <p class="font-mono text-[0.68rem] text-muted tracking-wider mb-1">Previous</p>
+          <h3 class="font-display text-lg font-bold">IT Intern</h3>
+          <p class="text-sm text-accent font-medium mb-2">Equity Bank Limited, Nairobi, Kenya</p>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Installed and configured computer and networking devices, managed LAN/WAN infrastructure, and provided
+            helpdesk support, user training, and preventive maintenance.
+          </p>
         </div>
       </div>
     </section>
   </div>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <p class="section-label reveal">featured projects</p>
-    <h2 class="reveal">Built to <span>last.</span></h2>
-    <div class="projects-grid">
+  <!-- ══════════ PUBLICATIONS ══════════ -->
+  <section id="publications" class="relative z-10 max-w-5xl mx-auto px-5 md:px-12 py-20">
+    <p class="reveal font-mono text-[0.72rem] text-accent uppercase tracking-[0.15em] mb-2">Publications</p>
+    <h2 class="reveal font-display font-bold leading-tight mb-10" style="font-size:clamp(1.6rem,4vw,2.6rem)">
+      Research &amp; <span class="text-accent">contributions.</span>
+    </h2>
 
-      <a class="project-card reveal" href="https://github.com/robertohuru" target="_blank">
-        <div class="project-meta">
-          <span class="project-type">Deep Learning · Remote Sensing</span>
-          <span class="project-icon">🛰️</span>
+    <div class="space-y-4">
+
+      <!-- Pub 1 -->
+      <a href="https://doi.org/10.5281/zenodo.17514983" target="_blank" rel="noopener" class="reveal group flex flex-col sm:flex-row sm:items-start gap-4 bg-card border border-white/[0.07]
+              rounded-xl p-5 md:p-6 hover:border-accent/40 transition-all duration-200 no-underline">
+        <div class="shrink-0">
+          <span
+            class="pub-year inline-block px-2.5 py-1 rounded bg-accent/10 text-accent border border-accent/20">2025</span>
         </div>
-        <h3>Satellite Imagery Deep Learning Pipeline</h3>
-        <p>End-to-end pipeline for automated classification and feature extraction from multispectral satellite imagery
-          using convolutional neural networks. Built for large-scale environmental monitoring at UTwente.</p>
-        <div class="project-highlight">⚡ Significant reduction in processing runtime vs. traditional methods</div>
-        <div class="project-stack">
-          <span class="stack-tag">TensorFlow</span>
-          <span class="stack-tag">Python</span>
-          <span class="stack-tag">PostGIS</span>
-          <span class="stack-tag">AWS</span>
-          <span class="stack-tag">GDAL</span>
-          <span class="stack-tag">Rasterio</span>
+        <div class="flex-1 min-w-0">
+          <h3
+            class="font-display text-base font-bold text-slate-100 group-hover:text-accent transition-colors mb-1 leading-snug">
+            Code Auditor: Make your research software ready for publishing
+          </h3>
+          <p class="font-mono text-[0.68rem] text-muted">DOI: 10.5281/zenodo.17514983 &nbsp;·&nbsp; 24 Oct 2025</p>
         </div>
+        <span class="hidden sm:block text-muted group-hover:text-accent transition-colors text-lg shrink-0">↗</span>
       </a>
 
-      <a class="project-card geo reveal" href="https://github.com/ConservationInternational/cplus-plugin"
-        target="_blank">
-        <div class="project-meta">
-          <span class="project-type">Open Source · QGIS Plugin</span>
-          <span class="project-icon">🌿</span>
+      <!-- Pub 2 -->
+      <a href="https://zenodo.org/records/14990010" target="_blank" rel="noopener" class="reveal group flex flex-col sm:flex-row sm:items-start gap-4 bg-card border border-white/[0.07]
+              rounded-xl p-5 md:p-6 hover:border-accent/40 transition-all duration-200 no-underline">
+        <div class="shrink-0">
+          <span
+            class="pub-year inline-block px-2.5 py-1 rounded bg-accent/10 text-accent border border-accent/20">2025</span>
         </div>
-        <h3>CPLUS QGIS Plugin</h3>
-        <p>Open-source QGIS plugin developed for Conservation International to support conservation planning and natural
-          capital accounting workflows. Helps analysts model land-use scenarios directly inside QGIS.</p>
-        <div class="project-highlight">🌍 Deployed for conservation teams across multiple countries</div>
-        <div class="project-stack">
-          <span class="stack-tag">Python</span>
-          <span class="stack-tag">QGIS API</span>
-          <span class="stack-tag">PyQGIS</span>
-          <span class="stack-tag">GDAL</span>
-          <span class="stack-tag">Qt</span>
+        <div class="flex-1 min-w-0">
+          <h3
+            class="font-display text-base font-bold text-slate-100 group-hover:text-accent transition-colors mb-1 leading-snug">
+            How to check if your research code is sustainable?
+          </h3>
+          <p class="font-mono text-[0.68rem] text-muted">DOI: 10.5281/zenodo.14990010 &nbsp;·&nbsp; 27 Feb 2025</p>
         </div>
+        <span class="hidden sm:block text-muted group-hover:text-accent transition-colors text-lg shrink-0">↗</span>
       </a>
 
-      <a class="project-card blue reveal" href="https://github.com/robertohuru" target="_blank">
-        <div class="project-meta">
-          <span class="project-type">Land Administration · UN-Habitat</span>
-          <span class="project-icon">🏛️</span>
+      <!-- Pub 3 -->
+      <a href="https://doi.org/10.1016/j.gfs.2025.100830" target="_blank" rel="noopener" class="reveal group flex flex-col sm:flex-row sm:items-start gap-4 bg-card border border-white/[0.07]
+              rounded-xl p-5 md:p-6 hover:border-accent/40 transition-all duration-200 no-underline">
+        <div class="shrink-0">
+          <span
+            class="pub-year inline-block px-2.5 py-1 rounded bg-accent/10 text-accent border border-accent/20">2025</span>
         </div>
-        <h3>Digital Flexible Land Administration System</h3>
-        <p>Web-based FLATS system for UN-Habitat deployed in Namibia, enabling digital management of land rights, parcel
-          records, and tenure documentation for informal settlements.</p>
-        <div class="project-highlight">📈 Major efficiency gain over previous paper-based workflows</div>
-        <div class="project-stack">
-          <span class="stack-tag">Django</span>
-          <span class="stack-tag">PostGIS</span>
-          <span class="stack-tag">REST API</span>
-          <span class="stack-tag">Leaflet</span>
-          <span class="stack-tag">ODK</span>
+        <div class="flex-1 min-w-0">
+          <h3
+            class="font-display text-base font-bold text-slate-100 group-hover:text-accent transition-colors mb-1 leading-snug">
+            Local food system resilience in China integrating supply and demand
+          </h3>
+          <p class="font-mono text-[0.68rem] text-muted">DOI: 10.1016/j.gfs.2025.100830 &nbsp;·&nbsp; February 2025
+            &nbsp;·&nbsp; <em class="text-accent2">Global Food Security</em></p>
         </div>
+        <span class="hidden sm:block text-muted group-hover:text-accent transition-colors text-lg shrink-0">↗</span>
       </a>
 
-      <a class="project-card geo reveal" href="https://github.com/GIP-ITC-UniversityTwente/supplant_plugin"
-        target="_blank">
-        <div class="project-meta">
-          <span class="project-type">Land Administration · QGIS Plugin</span>
-          <span class="project-icon">🏛️</span>
+      <!-- Pub 4 -->
+      <a href="https://zenodo.org/records/13983664" target="_blank" rel="noopener" class="reveal group flex flex-col sm:flex-row sm:items-start gap-4 bg-card border border-white/[0.07]
+              rounded-xl p-5 md:p-6 hover:border-accent/40 transition-all duration-200 no-underline">
+        <div class="shrink-0">
+          <span class="pub-year inline-block px-2.5 py-1 rounded bg-geo/10 text-geo border border-geo/20">2024</span>
         </div>
-        <h3>GLSC Supplant QGIS Plugin</h3>
-        <p>The supplant tool was developed as a plugin for QGIS to help construct high-quality digital representations
-          of Guyanan survey plans. These plans have laid out Guyana's spatial planning process that allows land
-          development since the late 18th century.
-        </p>
-        <p>
-          This work was conducted in context of the FAO-GLSC Guyana Sustainable Land Development and Management (SLDM)
-          Project that is capacitating the Guyana Lands and Surveys Commission (GLSC) and is funded by the Guyana REDD+
-          Investment Fund (GRIF).
-        </p>
-        <div class="project-highlight">📈 Major efficiency gain over previous paper-based workflows</div>
-        <div class="project-stack">
-          <span class="stack-tag">Python</span>
-          <span class="stack-tag">QGIS API</span>
-          <span class="stack-tag">PyQGIS</span>
-          <span class="stack-tag">GDAL</span>
-          <span class="stack-tag">PostGIS</span>
+        <div class="flex-1 min-w-0">
+          <h3
+            class="font-display text-base font-bold text-slate-100 group-hover:text-accent transition-colors mb-1 leading-snug">
+            Developing better open research software by using modern software templates and conformity check tools
+          </h3>
+          <p class="font-mono text-[0.68rem] text-muted">DOI: 10.5281/zenodo.13983663 &nbsp;·&nbsp; 22 Oct 2024</p>
         </div>
+        <span class="hidden sm:block text-muted group-hover:text-accent transition-colors text-lg shrink-0">↗</span>
       </a>
 
-      <a class="project-card reveal" href="https://mapfra.itc.utwente.nl/" target="_blank">
-        <div class="project-meta">
-          <span class="project-type">Agriculture. Statistics. ETL</span>
-          <span class="project-icon">🏛️</span>
+      <!-- Pub 5 -->
+      <a href="https://doi.org/10.5281/zenodo.12567841" target="_blank" rel="noopener" class="reveal group flex flex-col sm:flex-row sm:items-start gap-4 bg-card border border-white/[0.07]
+              rounded-xl p-5 md:p-6 hover:border-accent/40 transition-all duration-200 no-underline">
+        <div class="shrink-0">
+          <span class="pub-year inline-block px-2.5 py-1 rounded bg-geo/10 text-geo border border-geo/20">2024</span>
         </div>
-        <h3>Statistics from Space System</h3>
-        <p>Web-based system for visualizing agricultural crop statistics in Mozambique. This data platform shows the
-          various original source data sets, various derived data products and the monitoring device that allows
-          tracking fieldwork.</p>
-        <p>Crop statistics data are then aggregated to district, province or national level.</p>
-        <div class="project-stack">
-          <span class="stack-tag">Django</span>
-          <span class="stack-tag">PostGIS</span>
-          <span class="stack-tag">REST API</span>
-          <span class="stack-tag">Leaflet</span>
-          <span class="stack-tag">ODK</span>
+        <div class="flex-1 min-w-0">
+          <h3
+            class="font-display text-base font-bold text-slate-100 group-hover:text-accent transition-colors mb-1 leading-snug">
+            How to evaluate the impact of citizen-science projects: The case of urban green projects in Suriname
+          </h3>
+          <p class="font-mono text-[0.68rem] text-muted">DOI: 10.5281/zenodo.12567841 &nbsp;·&nbsp; 30 Jul 2024</p>
         </div>
+        <span class="hidden sm:block text-muted group-hover:text-accent transition-colors text-lg shrink-0">↗</span>
       </a>
 
-      <a class="project-card blue reveal" href="https://ltb.itc.utwente.nl/" target="_blank">
-        <div class="project-meta">
-          <span class="project-type">Graph. Visualization. Ontology</span>
-          <span class="project-icon">🏛️</span>
+      <!-- Pub 6 -->
+      <a href="https://doi.org/10.4060/cb7757en" target="_blank" rel="noopener" class="reveal group flex flex-col sm:flex-row sm:items-start gap-4 bg-card border border-white/[0.07]
+              rounded-xl p-5 md:p-6 hover:border-accent/40 transition-all duration-200 no-underline">
+        <div class="shrink-0">
+          <span
+            class="pub-year inline-block px-2.5 py-1 rounded bg-accent2/10 text-accent2 border border-accent2/20">2021</span>
         </div>
-        <h3>The Living TextBook (LTB)</h3>
-        <p>Web-based system for visualizing information in a large map of concepts and understand the relationships
-          between them.
-        </p>
-        <p>The Living Textbook is a novel way to display content digitally. It combines
-          the versatility of a wiki with the visual representation of concepts and their relationships. It allows
-          experts to create a mind map of their domain and offers learners the freedom to explore concepts through their
-          relationships.
-        </p>
-        <div class="project-stack">
-          <span class="stack-tag">PHP</span>
-          <span class="stack-tag">Symfony</span>
-          <span class="stack-tag">MySQL</span>
-          <span class="stack-tag">REST API</span>
+        <div class="flex-1 min-w-0">
+          <h3
+            class="font-display text-base font-bold text-slate-100 group-hover:text-accent transition-colors mb-1 leading-snug">
+            The resilience of domestic transport networks in the context of food security: A multi-country analysis
+          </h3>
+          <p class="font-mono text-[0.68rem] text-muted">DOI: 10.4060/cb7757en &nbsp;·&nbsp; 23 Nov 2021 &nbsp;·&nbsp;
+            <em class="text-accent2">FAO</em>
+          </p>
         </div>
+        <span class="hidden sm:block text-muted group-hover:text-accent transition-colors text-lg shrink-0">↗</span>
       </a>
 
-    </div>
-    <div style="text-align:center;margin-top:2.5rem;" class="reveal">
-      <a href="https://github.com/robertohuru" class="btn btn-ghost" target="_blank">View all repositories on GitHub
-        →</a>
+      <!-- Pub 7 -->
+      <a href="https://uknowledge.uky.edu/igc/24/7/25/" target="_blank" rel="noopener" class="reveal group flex flex-col sm:flex-row sm:items-start gap-4 bg-card border border-white/[0.07]
+              rounded-xl p-5 md:p-6 hover:border-accent/40 transition-all duration-200 no-underline">
+        <div class="shrink-0">
+          <span
+            class="pub-year inline-block px-2.5 py-1 rounded bg-accent2/10 text-accent2 border border-accent2/20">2021</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <h3
+            class="font-display text-base font-bold text-slate-100 group-hover:text-accent transition-colors mb-1 leading-snug">
+            MARIS: Scalable online scenario development tool for rangeland conservancy managers using high
+            spatial-temporal resolution carrying capacity maps and livestock market data
+          </h3>
+          <p class="font-mono text-[0.68rem] text-muted">International Grassland Congress (IGC) &nbsp;·&nbsp; 25 Oct
+            2021</p>
+        </div>
+        <span class="hidden sm:block text-muted group-hover:text-accent transition-colors text-lg shrink-0">↗</span>
+      </a>
+
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience"
-    style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:100%;padding:5rem 0;">
-    <div style="max-width:1100px;margin:0 auto;padding:0 3rem;">
-      <p class="section-label reveal">experience</p>
-      <h2 class="reveal">Where I've <span>worked.</span></h2>
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-period">Jan 2025 — Present</div>
-          <div class="timeline-role">Engineering &amp; Application Manager</div>
-          <div class="timeline-org">University of Twente, Enschede, Netherlands</div>
-          <p class="timeline-desc">Leading engineering and application strategy for geospatial software systems.
-            Overseeing development teams, infrastructure, and research software initiatives across the Faculty of
-            Geo-Information Science and Earth Observation (ITC).</p>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-period">2019 — Present</div>
-          <div class="timeline-role">Senior Software Engineer</div>
-          <div class="timeline-org">University of Twente, Enschede, Netherlands</div>
-          <p class="timeline-desc">Developed geospatial web applications and data pipelines, including satellite imagery
-            deep learning systems and spatial data infrastructure. Led full-stack development using Python, Django,
-            FastAPI, Angular, PostGIS, and AWS.</p>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-period">Previous</div>
-          <div class="timeline-role">Geospatial Developer</div>
-          <div class="timeline-org">Tensing Limited, Utrecht, Netherlands</div>
-          <p class="timeline-desc">Supported the development of software using ESRI ArcGIS Pro SDK, Python and
-            JavaScript API. Designed and developed ETL workflows using FME.
-          </p>
-        </div>
-        <div class="timeline-item geo reveal">
-          <div class="timeline-period">Previous</div>
-          <div class="timeline-role">Senior GIS Consultant</div>
-          <div class="timeline-org">UN-Habitat</div>
-          <p class="timeline-desc">Designed and implemented the Digital Flexible Land Administration System (FLATS) for
-            Namibia. Delivered spatial data solutions to improve land tenure documentation for informal urban
-            settlements.</p>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-period">Previous</div>
-          <div class="timeline-role">Software Engineer (Consultant)</div>
-          <div class="timeline-org">Palladium Group Holdings Limited, Singida, Tanzania</div>
-          <p class="timeline-desc">Designed and developed a mobile application for water incident reporting, admin
-            geoportal for managing reported incidents, and a PostgreSQL database infrastructure for data aggregation and
-            integration, ensuring reliability and real-time monitoring of data for data-driven decision making.
-          </p>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-period">Previous</div>
-          <div class="timeline-role">Software Developer</div>
-          <div class="timeline-org">Upande Limited, Nairobi, Kenya</div>
-          <p class="timeline-desc">Built custom software and GIS solutions for clients across East Africa, working
-            across the full web stack with a focus on data-driven decision making and environmental monitoring systems.
-          </p>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-period">Previous</div>
-          <div class="timeline-role">IT Analyst</div>
-          <div class="timeline-org">EED Advisory, Nairobi, Kenya</div>
-          <p class="timeline-desc">Managed the company's internal IT systems, led and adviced the company on IT related
-            issues including administration of the Bridge Electric Portal and the design and development of the
-            Household Energy Data Aggregator (HEDA) portal.
-          </p>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-period">Previous</div>
-          <div class="timeline-role">Software Developer</div>
-          <div class="timeline-org">Naturesurf Systems, Nairobi, Kenya</div>
-          <p class="timeline-desc">Designed and developed a MIS system integrating Biometrics for
-            registration and identification of people at border checkpoints using Java, Spring Boot, MySQL.
-          </p>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-period">Previous</div>
-          <div class="timeline-role">IT Intern</div>
-          <div class="timeline-org">Equity Bank Limited, Nairobi, Kenya</div>
-          <p class="timeline-desc">Installation and replacement of computer, networking devices and LAN/WAN
-            Configurations. Troubleshooting IT problems. Maintaining hardware and software inventory.
-            System Administration, Remote Assistance, Helpdesk Support, User Accounts Management.
-            Preventive maintenance and user training.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- ══════════ CONTACT ══════════ -->
+  <div class="bg-bg2 border-t border-white/[0.07] relative z-10">
+    <section id="contact" class="max-w-5xl mx-auto px-5 md:px-12 py-20">
+      <p class="reveal font-mono text-[0.72rem] text-accent uppercase tracking-[0.15em] mb-2">Contact</p>
+      <h2 class="reveal font-display font-bold leading-tight mb-10" style="font-size:clamp(1.6rem,4vw,2.6rem)">
+        Let's <span class="text-accent">build</span> something.
+      </h2>
 
-  <!-- CONTACT -->
-  <section id="contact" style="background:var(--bg2);max-width:100%;padding:5rem 0;">
-    <div style="max-width:1100px;margin:0 auto;padding:0 3rem;">
-      <p class="section-label reveal">contact</p>
-      <h2 class="reveal">Let's <span>build</span> something.</h2>
-      <div class="contact-grid">
-        <div class="contact-text reveal">
-          <p>Open to senior engineering roles, consulting engagements, and research collaborations — in Kenya, the EU,
-            the US, or fully remote. Fluent in English, Swahili, and Dutch (Intermediate). No visa sponsorship required
-            for EU roles.
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+        <!-- Text + CTA -->
+        <div class="reveal space-y-4">
+          <p class="text-slate-400 leading-relaxed">
+            I am open to senior engineering roles, consulting engagements, and research collaborations — in Kenya,
+            the EU, the US, or fully remote. No visa sponsorship is required for EU roles.
           </p>
-          <p>Whether you have a geospatial challenge, a machine learning project, or just want to connect, reach out via
-            any channel below.</p>
-          <a href="mailto:robertohuru@gmail.com" class="btn btn-primary" style="display:inline-flex;">&#9993; &nbsp;Send
-            an Email</a>
-        </div>
-        <div class="contact-links reveal">
-          <a href="mailto:robertohuru@gmail.com" class="contact-link">
-            <span class="contact-link-icon">✉</span>
-            <span class="contact-link-label">robertohuru@gmail.com</span>
+          <p class="text-slate-400 leading-relaxed">
+            Whether you have a geospatial challenge, a machine learning project, or simply want to connect, reach out
+            via any channel below.
+          </p>
+          <a href="mailto:robertohuru@gmail.com"
+            class="inline-flex items-center gap-2 px-7 py-3 rounded font-mono text-xs font-bold uppercase tracking-wider
+                  bg-accent text-[#0d0a06] border-2 border-accent hover:bg-transparent hover:text-accent transition-all mt-2">
+            ✉ Send an Email
           </a>
-          <div style="display: flex; justify-items: center; align-items: center; gap: 1rem;">
-            <a href="tel:+31616162284" class="contact-link" style="width: 50%;">
-              <span class="contact-link-icon">☎</span>
-              <span class="contact-link-label">+31 616 162 284</span>
+        </div>
+
+        <!-- Links -->
+        <div class="reveal flex flex-col gap-3">
+          <a href="mailto:robertohuru@gmail.com" class="contact-link flex items-center gap-4 px-5 py-3.5 bg-card border border-white/[0.07] rounded-lg
+                  text-slate-200 no-underline hover:border-accent hover:text-accent transition-all duration-200">
+            <span class="text-lg w-6 text-center">✉</span>
+            <span class="font-mono text-[0.76rem]">robertohuru@gmail.com</span>
+          </a>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <a href="tel:+31616162284" class="contact-link flex items-center gap-3 px-4 py-3.5 bg-card border border-white/[0.07] rounded-lg
+                    text-slate-200 no-underline hover:border-accent hover:text-accent transition-all duration-200">
+              <span class="text-base w-5 text-center">☎</span>
+              <span class="font-mono text-[0.7rem]">+31 616 162 284</span>
             </a>
-            <a href="tel:+254714360799" class="contact-link" style="width: 50%;">
-              <span class="contact-link-icon">☎</span>
-              <span class="contact-link-label">+254 714 360 799</span>
+            <a href="tel:+254714360799" class="contact-link flex items-center gap-3 px-4 py-3.5 bg-card border border-white/[0.07] rounded-lg
+                    text-slate-200 no-underline hover:border-accent hover:text-accent transition-all duration-200">
+              <span class="text-base w-5 text-center">☎</span>
+              <span class="font-mono text-[0.7rem]">+254 714 360 799</span>
             </a>
           </div>
 
-          <a href="https://linkedin.com/in/robert-ouko-ohuru" target="_blank" class="contact-link">
-            <span class="contact-link-icon">in</span>
-            <span class="contact-link-label">linkedin.com/in/robert-ouko-ohuru</span>
+          <a href="https://linkedin.com/in/robert-ouko-ohuru" target="_blank" rel="noopener" class="contact-link flex items-center gap-4 px-5 py-3.5 bg-card border border-white/[0.07] rounded-lg
+                  text-slate-200 no-underline hover:border-accent hover:text-accent transition-all duration-200">
+            <span class="font-bold text-sm w-6 text-center">in</span>
+            <span class="font-mono text-[0.76rem]">linkedin.com/in/robert-ouko-ohuru</span>
           </a>
-          <a href="https://github.com/robertohuru" target="_blank" class="contact-link">
-            <span class="contact-link-icon">⌥</span>
-            <span class="contact-link-label">github.com/robertohuru</span>
+
+          <a href="https://github.com/robertohuru" target="_blank" rel="noopener" class="contact-link flex items-center gap-4 px-5 py-3.5 bg-card border border-white/[0.07] rounded-lg
+                  text-slate-200 no-underline hover:border-accent hover:text-accent transition-all duration-200">
+            <span class="text-lg w-6 text-center">⌥</span>
+            <span class="font-mono text-[0.76rem]">github.com/robertohuru</span>
           </a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <footer>
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="relative z-10 text-center px-5 py-7 border-t border-white/[0.07]
+               font-mono text-[0.7rem] text-muted">
     &copy; <span id="year"></span> Robert Ouko Ohuru &nbsp;·&nbsp; Senior Software Engineer &nbsp;·&nbsp; Geospatial
     Specialist
   </footer>
 
   <script>
-    // Intersection observer for reveal animations
-    const reveals = document.querySelectorAll('.reveal');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 60);
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    reveals.forEach(el => obs.observe(el));
+    /* ── Year ── */
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Smooth active nav highlighting
-    const sections = document.querySelectorAll('section[id], div[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 150) current = s.id;
-      });
-      navLinks.forEach(a => {
-        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--accent)' : '';
+    /* ── Mobile menu toggle ── */
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const lines = document.querySelectorAll('.ham-line');
+    let open = false;
+
+    btn.addEventListener('click', () => {
+      open = !open;
+      menu.style.transform = open ? 'translateX(0)' : 'translateX(100%)';
+      lines[0].style.transform = open ? 'translateY(7px) rotate(45deg)' : '';
+      lines[1].style.opacity = open ? '0' : '1';
+      lines[2].style.transform = open ? 'translateY(-7px) rotate(-45deg)' : '';
+    });
+
+    document.querySelectorAll('.mobile-nav-link').forEach(l => {
+      l.addEventListener('click', () => {
+        open = false;
+        menu.style.transform = 'translateX(100%)';
+        lines.forEach(l => { l.style.transform = ''; l.style.opacity = '1'; });
       });
     });
 
-    document.getElementById("year").innerHTML = new Date().getFullYear();
+    /* ── Scroll reveal ── */
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 70);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    /* ── Active nav link ── */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => { if (window.scrollY >= s.offsetTop - 160) current = s.id; });
+      navLinks.forEach(a => {
+        const isActive = a.getAttribute('href') === '#' + current;
+        a.style.color = isActive ? '#e8854a' : '';
+      });
+    }, { passive: true });
   </script>
 </body>
 
