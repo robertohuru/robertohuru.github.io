@@ -154,7 +154,7 @@
     .hero-inner {
       position: relative;
       z-index: 1;
-      max-width: 760px;
+      max-width: auto;
     }
 
     .hero-tag {
@@ -222,7 +222,7 @@
       font-size: 1.05rem;
       line-height: 1.75;
       color: #94a3b8;
-      max-width: 560px;
+      max-width: 100%;
       margin-bottom: 2.5rem;
       opacity: 0;
       animation: fade-up 0.7s 0.65s forwards;
@@ -308,7 +308,7 @@
 
     h2 {
       font-family: 'Fraunces', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1rem, 4vw, 2rem);
       font-weight: 700;
       margin-bottom: 3rem;
       line-height: 1.1;
@@ -771,14 +771,16 @@
   </nav>
 
   <!-- HERO -->
-  <section id="hero" style="max-width:100%;padding-top:7rem;">
+  <section id="hero" style="max-width:100%;padding-top:0rem !important;">
     <div class="hero-inner">
-      <div class="hero-tag">52.2215° N, 6.8937° E — Enschede, Netherlands</div>
-      <h1>Robert<br /><em>Ouko Ohuru</em></h1>
+      <div class="hero-tag">Enschede, Netherlands <span> | </span> Nairobi, Kenya</div>
+      <h1>Robert <em>Ouko Ohuru</em></h1>
       <p class="hero-subtitle">Senior Software Engineer &amp; Geospatial Specialist</p>
       <p class="hero-desc">
         12+ years engineering software at the intersection of spatial data, machine learning, and real-world impact —
-        from UN-Habitat land systems in Namibia to deep learning pipelines processing satellite imagery at scale.
+        Proven track record architecting high-performance ETL pipelines, deep learning models for remote sensing, and
+        production-grade GIS applications. Experienced in leading cross-functional engineering initiatives and
+        collaborating with international organizations across Europe, Africa, Asia, and the Americas.
       </p>
       <div class="hero-cta">
         <a href="#projects" class="btn btn-primary">&#9658; View Projects</a>
@@ -790,21 +792,27 @@
 
   <!-- COORD STRIP -->
   <div class="coord-strip">
-    <span>Python · Django · FastAPI · Flask</span>
-    <span>·</span>
-    <span>JavaScript · Angular · React</span>
-    <span>·</span>
-    <span>PostGIS · PostgreSQL · GDAL</span>
-    <span>·</span>
-    <span>TensorFlow · PyTorch · AWS · Azure · GCP</span>
-    <span>·</span>
-    <span>QGIS · ArcGIS Pro · MapBox · Leaflet · FME</span>
+    <span>Full-Stack Software Development</span>
+    <span>|</span>
+    <span>Geospatial Systems Architecture</span>
+    <span>|</span>
+    <span>PostgreSQL & Spatial Database Design</span>
+    <span>|</span>
+    <span>Machine Learning & Remote Sensing</span>
+    <span>|</span>
+    <span>Docker & Containerized Deployment</span>
+    <span>|</span>
+    <span>Cloud Infrastructure (AWS, Azure, GCP)</span>
+    <span>|</span>
+    <span>ETL & Data Pipeline Automation</span>
+    <span>|</span>
+    <span>Remote & Distributed Team Collaboration</span>
   </div>
 
   <!-- ABOUT -->
   <section id="about">
-    <p class="section-label reveal">// 01 — about</p>
-    <h2 class="reveal">Engineer. <span>Geographer.</span><br />Problem solver.</h2>
+    <p class="section-label reveal">ABOUT</p>
+    <h2 class="reveal">Software Engineer | <span>Geospatial Specialist | </span>Cloud & Data Systems.</h2>
     <div class="about-grid">
       <div class="about-text reveal">
         <p>
@@ -813,9 +821,7 @@
         </p>
         <p>
           My work spans the full stack — from satellite imagery classification using deep learning to building REST APIs
-          and deploying cloud infrastructure — always anchored in real-world spatial problems. Previously, I built a
-          digital land administration system for <strong>UN-Habitat in Namibia</strong> and have contributed to
-          open-source tools like the <strong>CPLUS QGIS Plugin</strong> for Conservation International.
+          and deploying cloud infrastructure — always anchored in real-world spatial problems.
         </p>
         <p>
           MSc Geoinformatics, University of Twente · BSc Computer Science, JKUAT Kenya. Multilingual: English, Swahili,
@@ -846,7 +852,7 @@
   <!-- SKILLS -->
   <div class="skills-section">
     <section id="skills" style="padding:4rem 3rem;">
-      <p class="section-label reveal">// 02 — skills</p>
+      <p class="section-label reveal">skills</p>
       <h2 class="reveal">The <span>stack</span> behind the work</h2>
       <div class="skill-categories">
         <div class="skill-cat reveal">
@@ -919,7 +925,7 @@
 
   <!-- PROJECTS -->
   <section id="projects">
-    <p class="section-label reveal">// 03 — featured projects</p>
+    <p class="section-label reveal">featured projects</p>
     <h2 class="reveal">Built to <span>last.</span></h2>
     <div class="projects-grid">
 
@@ -938,7 +944,7 @@
           <span class="stack-tag">PostGIS</span>
           <span class="stack-tag">AWS</span>
           <span class="stack-tag">GDAL</span>
-          <span class="stack-tag">rasterio</span>
+          <span class="stack-tag">Rasterio</span>
         </div>
       </a>
 
@@ -979,6 +985,73 @@
         </div>
       </a>
 
+      <a class="project-card geo reveal" href="https://github.com/GIP-ITC-UniversityTwente/supplant_plugin"
+        target="_blank">
+        <div class="project-meta">
+          <span class="project-type">Land Administration · QGIS Plugin</span>
+          <span class="project-icon">🏛️</span>
+        </div>
+        <h3>GLSC Supplant QGIS Plugin</h3>
+        <p>The supplant tool was developed as a plugin for QGIS to help construct high-quality digital representations
+          of Guyanan survey plans. These plans have laid out Guyana's spatial planning process that allows land
+          development since the late 18th century.
+        </p>
+        <p>
+          This work was conducted in context of the FAO-GLSC Guyana Sustainable Land Development and Management (SLDM)
+          Project that is capacitating the Guyana Lands and Surveys Commission (GLSC) and is funded by the Guyana REDD+
+          Investment Fund (GRIF).
+        </p>
+        <div class="project-highlight">📈 Major efficiency gain over previous paper-based workflows</div>
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">QGIS API</span>
+          <span class="stack-tag">PyQGIS</span>
+          <span class="stack-tag">GDAL</span>
+          <span class="stack-tag">PostGIS</span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="https://mapfra.itc.utwente.nl/" target="_blank">
+        <div class="project-meta">
+          <span class="project-type">Agriculture. Statistics. ETL</span>
+          <span class="project-icon">🏛️</span>
+        </div>
+        <h3>Statistics from Space System</h3>
+        <p>Web-based system for visualizing agricultural crop statistics in Mozambique. This data platform shows the
+          various original source data sets, various derived data products and the monitoring device that allows
+          tracking fieldwork.</p>
+        <p>Crop statistics data are then aggregated to district, province or national level.</p>
+        <div class="project-stack">
+          <span class="stack-tag">Django</span>
+          <span class="stack-tag">PostGIS</span>
+          <span class="stack-tag">REST API</span>
+          <span class="stack-tag">Leaflet</span>
+          <span class="stack-tag">ODK</span>
+        </div>
+      </a>
+
+      <a class="project-card blue reveal" href="https://ltb.itc.utwente.nl/" target="_blank">
+        <div class="project-meta">
+          <span class="project-type">Graph. Visualization. Ontology</span>
+          <span class="project-icon">🏛️</span>
+        </div>
+        <h3>The Living TextBook (LTB)</h3>
+        <p>Web-based system for visualizing information in a large map of concepts and understand the relationships
+          between them.
+        </p>
+        <p>The Living Textbook is a novel way to display content digitally. It combines
+          the versatility of a wiki with the visual representation of concepts and their relationships. It allows
+          experts to create a mind map of their domain and offers learners the freedom to explore concepts through their
+          relationships.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">PHP</span>
+          <span class="stack-tag">Symfony</span>
+          <span class="stack-tag">MySQL</span>
+          <span class="stack-tag">REST API</span>
+        </div>
+      </a>
+
     </div>
     <div style="text-align:center;margin-top:2.5rem;" class="reveal">
       <a href="https://github.com/robertohuru" class="btn btn-ghost" target="_blank">View all repositories on GitHub
@@ -990,7 +1063,7 @@
   <section id="experience"
     style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);max-width:100%;padding:5rem 0;">
     <div style="max-width:1100px;margin:0 auto;padding:0 3rem;">
-      <p class="section-label reveal">// 04 — experience</p>
+      <p class="section-label reveal">experience</p>
       <h2 class="reveal">Where I've <span>worked.</span></h2>
       <div class="timeline">
         <div class="timeline-item reveal">
@@ -1002,7 +1075,7 @@
             Geo-Information Science and Earth Observation (ITC).</p>
         </div>
         <div class="timeline-item reveal">
-          <div class="timeline-period">2019 — 2024</div>
+          <div class="timeline-period">2019 — Present</div>
           <div class="timeline-role">Senior Software Engineer</div>
           <div class="timeline-org">University of Twente, Enschede, Netherlands</div>
           <p class="timeline-desc">Developed geospatial web applications and data pipelines, including satellite imagery
@@ -1010,6 +1083,14 @@
             FastAPI, Angular, PostGIS, and AWS.</p>
         </div>
         <div class="timeline-item reveal">
+          <div class="timeline-period">Previous</div>
+          <div class="timeline-role">Geospatial Developer</div>
+          <div class="timeline-org">Tensing Limited, Utrecht, Netherlands</div>
+          <p class="timeline-desc">Supported the development of software using ESRI ArcGIS Pro SDK, Python and
+            JavaScript API. Designed and developed ETL workflows using FME.
+          </p>
+        </div>
+        <div class="timeline-item geo reveal">
           <div class="timeline-period">Previous</div>
           <div class="timeline-role">Senior GIS Consultant</div>
           <div class="timeline-org">UN-Habitat</div>
@@ -1019,11 +1100,46 @@
         </div>
         <div class="timeline-item reveal">
           <div class="timeline-period">Previous</div>
+          <div class="timeline-role">Software Engineer (Consultant)</div>
+          <div class="timeline-org">Palladium Group Holdings Limited, Singida, Tanzania</div>
+          <p class="timeline-desc">Designed and developed a mobile application for water incident reporting, admin
+            geoportal for managing reported incidents, and a PostgreSQL database infrastructure for data aggregation and
+            integration, ensuring reliability and real-time monitoring of data for data-driven decision making.
+          </p>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-period">Previous</div>
           <div class="timeline-role">Software Developer</div>
           <div class="timeline-org">Upande Limited, Nairobi, Kenya</div>
           <p class="timeline-desc">Built custom software and GIS solutions for clients across East Africa, working
             across the full web stack with a focus on data-driven decision making and environmental monitoring systems.
           </p>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-period">Previous</div>
+          <div class="timeline-role">IT Analyst</div>
+          <div class="timeline-org">EED Advisory, Nairobi, Kenya</div>
+          <p class="timeline-desc">Managed the company's internal IT systems, led and adviced the company on IT related
+            issues including administration of the Bridge Electric Portal and the design and development of the
+            Household Energy Data Aggregator (HEDA) portal.
+          </p>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-period">Previous</div>
+          <div class="timeline-role">Software Developer</div>
+          <div class="timeline-org">Naturesurf Systems, Nairobi, Kenya</div>
+          <p class="timeline-desc">Designed and developed a MIS system integrating Biometrics for
+            registration and identification of people at border checkpoints using Java, Spring Boot, MySQL.
+          </p>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-period">Previous</div>
+          <div class="timeline-role">IT Intern</div>
+          <div class="timeline-org">Equity Bank Limited, Nairobi, Kenya</div>
+          <p class="timeline-desc">Installation and replacement of computer, networking devices and LAN/WAN
+            Configurations. Troubleshooting IT problems. Maintaining hardware and software inventory.
+            System Administration, Remote Assistance, Helpdesk Support, User Accounts Management.
+            Preventive maintenance and user training.</p>
         </div>
       </div>
     </div>
@@ -1032,7 +1148,7 @@
   <!-- CONTACT -->
   <section id="contact" style="background:var(--bg2);max-width:100%;padding:5rem 0;">
     <div style="max-width:1100px;margin:0 auto;padding:0 3rem;">
-      <p class="section-label reveal">// 05 — contact</p>
+      <p class="section-label reveal">contact</p>
       <h2 class="reveal">Let's <span>build</span> something.</h2>
       <div class="contact-grid">
         <div class="contact-text reveal">
@@ -1048,10 +1164,6 @@
           <a href="mailto:robertohuru@gmail.com" class="contact-link">
             <span class="contact-link-icon">✉</span>
             <span class="contact-link-label">robertohuru@gmail.com</span>
-          </a>
-          <a href="tel:+31616162284" class="contact-link">
-            <span class="contact-link-icon">☎</span>
-            <span class="contact-link-label">+31 616 162 284</span>
           </a>
           <a href="https://linkedin.com/in/robert-ouko-ohuru" target="_blank" class="contact-link">
             <span class="contact-link-icon">in</span>
